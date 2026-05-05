@@ -31,7 +31,7 @@ import Badge from '../../components/ui/Badge.astro';
     </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 pb-20" data-aos="fade-up">
+  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
     <SectionHeader
       eyebrow="Notes"
       title="What I am studying"
@@ -53,6 +53,39 @@ import Badge from '../../components/ui/Badge.astro';
           <li>Threat modeling basics</li>
           <li>Responsible disclosure mindset</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-20" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Home Lab"
+      title="Small lab, strict boundaries"
+      description="Security notes stay tied to devices and networks I own."
+    />
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Environment</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>Kali Linux workstation</li>
+          <li>Secondhand router for practice</li>
+          <li>Isolated test network</li>
+        </ul>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">WiFi Research</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>Channel observation</li>
+          <li>Signal and packet basics</li>
+          <li>Defensive hardening notes</li>
+        </ul>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Rule</div>
+        <p class="mt-3 text-sm text-text-secondary">
+          If it is not my device, my lab, or explicitly allowed, it is out of
+          scope.
+        </p>
       </div>
     </div>
   </section>
