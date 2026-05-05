@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#080D1A"/>
+  <path d="M0 472C160 390 300 360 468 410C641 462 780 407 921 320C1021 258 1110 235 1200 252V630H0V472Z" fill="#111827"/>
+  <path d="M140 424c0-53 43-96 96-96 13 0 25 2 37 7 22-61 80-104 148-104 87 0 157 70 157 157 0 5 0 10-1 15 37 13 63 48 63 90 0 53-43 96-96 96H240c-55 0-100-45-100-100v-65Z" fill="#0F172A" stroke="#38BDF8" stroke-width="5"/>
+  <text x="116" y="143" fill="#94A3B8" font-family="DM Sans, Arial, sans-serif" font-size="28" letter-spacing="8">AWANS.ME</text>
+  <text x="116" y="238" fill="#F1F5F9" font-family="Sora, Arial, sans-serif" font-size="74" font-weight="800">Awan.</text>
+  <text x="116" y="322" fill="#F1F5F9" font-family="Sora, Arial, sans-serif" font-size="58" font-weight="700">Under the cloud,</text>
+  <text x="116" y="392" fill="#6EE7B7" font-family="Sora, Arial, sans-serif" font-size="58" font-weight="700">building what matters.</text>
+  <text x="116" y="506" fill="#94A3B8" font-family="DM Sans, Arial, sans-serif" font-size="30">IoT | AI Agents | Prompting | Security</text>
+  <path d="M885 102h198v198H885z" fill="#0F172A" stroke="#1E293B" stroke-width="4"/>
+  <path d="M934 244 983 110h23l49 134h-27l-10-29h-48l-10 29h-26Zm44-52h32l-16-48-16 48Z" fill="#38BDF8"/>
+  <path d="M916 287h137" stroke="#6EE7B7" stroke-width="7" stroke-linecap="round"/>
+</svg>

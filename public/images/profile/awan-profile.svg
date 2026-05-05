@@ -1,0 +1,16 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Awan profile mark</title>
+  <desc id="desc">A circular profile mark for Awan with cloud-inspired forms and the letter A.</desc>
+  <rect width="400" height="400" rx="80" fill="#080D1A"/>
+  <path d="M68 260c0-34 27-61 61-61 8 0 16 2 23 5 14-38 50-65 92-65 54 0 98 44 98 98 0 3 0 6-1 9 23 8 39 30 39 56 0 33-27 60-60 60H132c-35 0-64-29-64-64v-38Z" fill="#111827"/>
+  <path d="M68 260c0-34 27-61 61-61 8 0 16 2 23 5 14-38 50-65 92-65 54 0 98 44 98 98 0 3 0 6-1 9 23 8 39 30 39 56 0 33-27 60-60 60H132c-35 0-64-29-64-64v-38Z" stroke="#38BDF8" stroke-width="3"/>
+  <path d="M138 292 198 104h38l60 188h-37l-12-42h-61l-12 42h-36Zm57-72h43l-21-72-22 72Z" fill="url(#paint0_linear)"/>
+  <path d="M96 96c36-33 79-50 129-50 54 0 100 20 137 59" stroke="#6EE7B7" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+  <path d="M74 326c34 30 78 45 132 45 49 0 91-13 126-39" stroke="#38BDF8" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="144" y1="112" x2="291" y2="291" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#6EE7B7"/>
+    </linearGradient>
+  </defs>
+</svg>
