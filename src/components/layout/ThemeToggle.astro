@@ -1,14 +1,26 @@
-<button
-  type="button"
-  class="theme-toggle text-[0.65rem] uppercase tracking-[0.3em]"
-  data-theme-toggle
-  aria-label="Toggle theme"
->
-  <span class="icon-sun" aria-hidden="true">
-    <i data-lucide="sun" class="w-4 h-4"></i>
-  </span>
-  <span class="icon-moon" aria-hidden="true">
-    <i data-lucide="moon" class="w-4 h-4"></i>
-  </span>
-  <span class="hidden sm:inline">Theme</span>
-</button>
+<div class="theme-toggle" role="group" aria-label="Theme mode selector">
+  <button
+    type="button"
+    class="theme-choice"
+    data-theme-option="light"
+    aria-label="Light theme"
+  >
+    Light
+  </button>
+  <button
+    type="button"
+    class="theme-choice"
+    data-theme-option="dark"
+    aria-label="Dark theme"
+  >
+    Dark
+  </button>
+  <button
+    type="button"
+    class="theme-choice"
+    data-theme-option="dark-pink"
+    aria-label="Dark pink theme"
+  >
+    Dark Pink
+  </button>
+</div>

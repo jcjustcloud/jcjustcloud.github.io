@@ -26,12 +26,24 @@
   --border: #1E293B;
 }
 
+[data-theme="dark-pink"] {
+  --bg-base: #080D1A;
+  --bg-card: #111827;
+  --bg-elevated: #1E2A3A;
+  --accent-primary: #F472B6;
+  --accent-secondary: #EC4899;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --border: #2D1B2E;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -47,6 +59,7 @@ body {
     transparent 34rem
   );
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 [x-cloak] {
@@ -82,12 +95,11 @@ a:hover {
 .theme-toggle {
   border: 1px solid var(--border);
   background: var(--bg-card);
-  color: var(--text-primary);
   border-radius: 999px;
-  padding: 0.35rem 0.55rem;
+  padding: 0.2rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.15rem;
   transition: transform 200ms ease, border-color 200ms ease, color 200ms ease;
 }
 
@@ -96,20 +108,83 @@ a:hover {
   border-color: var(--accent-primary);
 }
 
-.theme-toggle .icon-sun {
-  display: inline-flex;
+.theme-choice {
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 0.26rem 0.55rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
-.theme-toggle .icon-moon {
-  display: none;
+.theme-choice.is-active {
+  background: color-mix(in srgb, var(--accent-primary) 24%, transparent);
+  color: var(--text-primary);
 }
 
-[data-theme="dark"] .theme-toggle .icon-sun {
-  display: none;
+.particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
 }
 
-[data-theme="dark"] .theme-toggle .icon-moon {
-  display: inline-flex;
+.window-card {
+  border-top-width: 2px;
+}
+
+.window-card-iot {
+  border-top-color: #10B981;
+}
+
+.window-card-ai {
+  border-top-color: #38BDF8;
+}
+
+.window-card-prompting {
+  border-top-color: #A855F7;
+}
+
+.window-card-security {
+  border-top-color: #FB923C;
+}
+
+.window-titlebar {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-elevated) 42%, transparent);
+}
+
+.window-dot {
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.dot-red {
+  background: #FB7185;
+}
+
+.dot-yellow {
+  background: #FACC15;
+}
+
+.dot-green {
+  background: #4ADE80;
+}
+
+.window-title {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .surface {

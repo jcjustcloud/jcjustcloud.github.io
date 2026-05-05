@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
+import ParticleCanvas from '../components/layout/ParticleCanvas.astro';
 
 const {
   title = 'Awan - Under the Cloud',
@@ -43,11 +44,15 @@ const ogImage = Astro.site
     />
     <script is:inline>
       try {
+        const supportedThemes = ['light', 'dark', 'dark-pink'];
         const storedTheme = localStorage.getItem('theme');
         const prefersDark =
           window.matchMedia &&
           window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        const fallbackTheme = prefersDark ? 'dark' : 'light';
+        const theme = supportedThemes.includes(storedTheme)
+          ? storedTheme
+          : fallbackTheme;
         document.documentElement.setAttribute('data-theme', theme);
       } catch (err) {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -55,8 +60,9 @@ const ogImage = Astro.site
     </script>
   </head>
   <body class="min-h-screen">
+    <ParticleCanvas />
     <Navbar />
-    <main id="main-content" class="relative">
+    <main id="main-content" class="relative z-10">
       <slot />
     </main>
     <Footer />
@@ -68,27 +74,126 @@ const ogImage = Astro.site
       window.Alpine = Alpine;
       Alpine.start();
 
+      const supportedThemes = ['light', 'dark', 'dark-pink'];
+
       const setTheme = (nextTheme) => {
+        if (!supportedThemes.includes(nextTheme)) {
+          return;
+        }
+
         document.documentElement.setAttribute('data-theme', nextTheme);
         try {
           localStorage.setItem('theme', nextTheme);
         } catch (err) {
           // Ignore storage errors
         }
+
+        document.querySelectorAll('[data-theme-option]').forEach((button) => {
+          const isActive = button.dataset.themeOption === nextTheme;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+      };
+
+      const initParticleCanvas = () => {
+        const prefersReducedMotion =
+          window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const canvas = document.getElementById('particle-canvas');
+        if (!canvas || prefersReducedMotion) {
+          return;
+        }
+
+        const context = canvas.getContext('2d');
+        if (!context) {
+          return;
+        }
+
+        const particles = Array.from({ length: 26 }, () => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.55,
+          vy: (Math.random() - 0.5) * 0.55,
+          r: Math.random() * 2.4 + 0.8
+        }));
+
+        let pointerX = window.innerWidth / 2;
+        let pointerY = window.innerHeight / 2;
+
+        const resize = () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        };
+
+        const getAccentColor = () =>
+          getComputedStyle(document.documentElement)
+            .getPropertyValue('--accent-primary')
+            .trim() || '#38BDF8';
+
+        const tick = () => {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          const accent = getAccentColor();
+
+          particles.forEach((particle) => {
+            const dx = pointerX - particle.x;
+            const dy = pointerY - particle.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (distance < 160) {
+              particle.vx += dx * 0.00009;
+              particle.vy += dy * 0.00009;
+            }
+
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.vx *= 0.985;
+            particle.vy *= 0.985;
+
+            if (particle.x < 0 || particle.x > canvas.width) {
+              particle.vx *= -1;
+            }
+
+            if (particle.y < 0 || particle.y > canvas.height) {
+              particle.vy *= -1;
+            }
+
+            context.beginPath();
+            context.fillStyle = accent;
+            context.globalAlpha = 0.22;
+            context.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
+            context.fill();
+            context.globalAlpha = 1;
+          });
+
+          requestAnimationFrame(tick);
+        };
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (event) => {
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+        });
+
+        resize();
+        tick();
       };
 
       const init = () => {
         AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
         createIcons({ icons });
 
-        document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+        const defaultTheme =
+          document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(defaultTheme);
+
+        document.querySelectorAll('[data-theme-option]').forEach((button) => {
           button.addEventListener('click', () => {
-            const current =
-              document.documentElement.getAttribute('data-theme') || 'light';
-            const nextTheme = current === 'dark' ? 'light' : 'dark';
-            setTheme(nextTheme);
+            setTheme(button.dataset.themeOption || 'light');
           });
         });
+
+        initParticleCanvas();
       };
 
       if (document.readyState === 'loading') {

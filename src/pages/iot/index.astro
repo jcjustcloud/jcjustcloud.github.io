@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
-import ProjectCard from '../../components/ui/ProjectCard.astro';
+import WindowCard from '../../components/ui/WindowCard.astro';
+import WindowGrid from '../../components/ui/WindowGrid.astro';
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('iot');
@@ -58,7 +59,8 @@ const statuses = ['active', 'wip', 'completed'];
       </button>
     </div>
 
-    <div class="grid gap-6 mt-10 md:grid-cols-2">
+    <div class="mt-10">
+      <WindowGrid>
       {sortedProjects.map((project) => (
         <div
           data-board={project.data.board}
@@ -66,17 +68,18 @@ const statuses = ['active', 'wip', 'completed'];
           x-show="(board === 'all' || board === $el.dataset.board) && (status === 'all' || status === $el.dataset.status)"
           x-transition
         >
-          <ProjectCard
+          <WindowCard
             title={project.data.title}
+            subtitle={`${project.data.board} · ${project.data.status}`}
             description={project.data.description}
             href={`/iot/${project.slug}`}
             category="iot"
             status={project.data.status}
-            tags={[project.data.board, ...project.data.tags]}
-            icon="cpu"
+            tags={project.data.tags}
           />
         </div>
       ))}
+      </WindowGrid>
     </div>
   </section>
 </BaseLayout>

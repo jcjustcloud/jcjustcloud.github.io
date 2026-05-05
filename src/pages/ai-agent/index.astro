@@ -4,6 +4,8 @@ import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Timeline from '../../components/ui/Timeline.astro';
 import Badge from '../../components/ui/Badge.astro';
 import CodeBlock from '../../components/ui/CodeBlock.astro';
+import WindowCard from '../../components/ui/WindowCard.astro';
+import WindowGrid from '../../components/ui/WindowGrid.astro';
 
 const deploymentSteps = [
   {
@@ -28,6 +30,36 @@ Findings:
 - Host discovery completed
 - Open services grouped by risk
 - Follow-up checklist exported`;
+
+const windows = [
+  {
+    title: 'Architecture',
+    subtitle: 'Master Agent · 25 tools',
+    description: 'Master flow, orchestrator role, and tool routing design.',
+    href: '#architecture',
+    status: 'active',
+    category: 'ai',
+    tags: ['LangGraph', 'CrewAI']
+  },
+  {
+    title: 'Deployment',
+    subtitle: 'Local · GitHub Actions',
+    description: 'Runbook for local and cloud execution workflows.',
+    href: '#deployment',
+    status: 'active',
+    category: 'ai',
+    tags: ['CI/CD']
+  },
+  {
+    title: 'Output',
+    subtitle: 'Markdown · SQLite',
+    description: 'Readable output format for review and archival.',
+    href: '#output',
+    status: 'active',
+    category: 'ai',
+    tags: ['Reports']
+  }
+];
 ---
 <BaseLayout
   title="AI Agent - Awan"
@@ -45,9 +77,17 @@ Findings:
       <Badge label="CrewAI" variant="ai" />
       <Badge label="SQLite" variant="ai" />
     </div>
+
+    <div class="mt-8">
+      <WindowGrid>
+        {windows.map((window) => (
+          <WindowCard {...window} />
+        ))}
+      </WindowGrid>
+    </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+  <section id="architecture" class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
     <div class="surface rounded-3xl p-6 shadow-card">
       <div class="text-xs uppercase tracking-[0.35em] text-text-secondary">
         Architecture
@@ -63,7 +103,7 @@ Findings:
     </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+  <section id="deployment" class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
     <SectionHeader
       eyebrow="Deploy"
       title="Run AetherLab anywhere"
@@ -74,7 +114,7 @@ Findings:
     </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+  <section id="output" class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
     <SectionHeader
       eyebrow="Demo"
       title="Markdown-first output"

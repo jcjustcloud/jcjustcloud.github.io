@@ -16,7 +16,7 @@ export const contacts = [
   },
   {
     label: 'Email',
-    href: 'mailto:awan%40awans.me',
+    href: 'mailto:yusran%40awans.me',
     icon: 'mail'
   }
 ];
