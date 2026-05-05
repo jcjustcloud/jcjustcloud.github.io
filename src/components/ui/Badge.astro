@@ -1,0 +1,16 @@
+---
+const { label, variant = 'default' } = Astro.props;
+
+const variants = {
+  iot: 'badge badge-iot',
+  ai: 'badge badge-ai',
+  prompting: 'badge badge-prompting',
+  security: 'badge badge-security',
+  active: 'badge badge-status-active',
+  wip: 'badge badge-status-wip',
+  completed: 'badge badge-status-completed'
+};
+
+const className = variants[variant] || 'badge surface text-text-secondary';
+---
+<span class={className}>{label}</span>

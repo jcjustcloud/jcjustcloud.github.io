@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const {
+  title,
+  description,
+  parentHref = '/',
+  parentLabel = 'Home',
+  meta = [],
+  details = []
+} = Astro.props;
+---
+<BaseLayout title={`${title} - Awan`} description={description}>
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-8">
+    <div class="text-sm text-text-secondary">
+      <a href={parentHref} class="hover:text-accent transition-colors">
+        {parentLabel}
+      </a>
+      <span class="mx-2">/</span>
+      <span>{title}</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-display font-semibold mt-4">
+      {title}
+    </h1>
+    {description && (
+      <p class="text-text-secondary mt-3 max-w-2xl">{description}</p>
+    )}
+    {meta.length > 0 && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {meta.map((item) => (
+          <Badge label={item.label} variant={item.variant} />
+        ))}
+      </div>
+    )}
+    {details.length > 0 && (
+      <div class="mt-6 grid gap-2 sm:grid-cols-2 text-sm text-text-secondary">
+        {details.map((item) => (
+          <div class="flex items-center gap-2">
+            <span class="uppercase tracking-[0.18em] text-[0.65rem]">
+              {item.label}
+            </span>
+            {item.href ? (
+              <a
+                class="text-accent hover:underline"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.value}
+              </a>
+            ) : (
+              <span class="text-text-primary">{item.value}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+  <section class="max-w-4xl mx-auto px-6 pb-20 rich-text">
+    <slot />
+  </section>
+</BaseLayout>

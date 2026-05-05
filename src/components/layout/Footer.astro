@@ -1,0 +1,53 @@
+---
+import { navLinks } from '../../data/nav';
+import { contacts } from '../../data/contact';
+
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-border">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid gap-10 lg:grid-cols-[1.2fr,1fr,1fr]">
+    <div class="space-y-4">
+      <div class="font-display text-xl font-semibold">Awan</div>
+      <p class="text-text-secondary">
+        Under the cloud, building what matters. Personal portfolio and knowledge
+        notes built with care.
+      </p>
+    </div>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-[0.25em] text-text-secondary">
+        Explore
+      </div>
+      <div class="grid gap-2 text-sm">
+        {navLinks.map((link) => (
+          <a href={link.href} class="hover:text-accent transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-[0.25em] text-text-secondary">
+        Contact
+      </div>
+      <div class="grid gap-2 text-sm">
+        {contacts.map((contact) => (
+          <a
+            href={contact.href}
+            class="flex items-center gap-2 text-text-secondary hover:text-accent"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i data-lucide={contact.icon} class="w-4 h-4"></i>
+            <span>{contact.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 py-6 text-xs text-text-secondary flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <span>Copyright {year} Awan. All rights reserved.</span>
+      <span>Built with Astro, Tailwind, and a calm mind.</span>
+    </div>
+  </div>
+</footer>

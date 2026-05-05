@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('prompting');
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+<BaseLayout
+  title="Prompting - Awan"
+  description="Prompting techniques with examples and breakdowns."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-10" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Prompting"
+      title="Practical prompt techniques"
+      description="Short guides, real prompts, and analysis that stay grounded."
+    />
+  </section>
+  <section class="max-w-5xl mx-auto px-6 pb-20">
+    <div class="grid gap-6 md:grid-cols-2">
+      {sortedPosts.map((post) => (
+        <ProjectCard
+          title={post.data.title}
+          description={post.data.description}
+          href={`/prompting/${post.slug}`}
+          category="prompting"
+          tags={[post.data.category]}
+          icon="sparkles"
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

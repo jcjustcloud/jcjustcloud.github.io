@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('iot');
+const sortedProjects = projects.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+<BaseLayout
+  title="IoT Projects - Awan"
+  description="Active IoT builds and hardware experiments."
+>
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-10" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="IoT"
+      title="Boards, sensors, and monitoring systems"
+      description="From Arduino prototypes to ESP32 deployments in the home lab."
+    />
+  </section>
+  <section class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="grid gap-6 md:grid-cols-2">
+      {sortedProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          href={`/iot/${project.slug}`}
+          category="iot"
+          status={project.data.status}
+          tags={project.data.tags}
+          icon="cpu"
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

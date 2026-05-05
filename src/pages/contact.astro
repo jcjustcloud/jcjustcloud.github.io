@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import ContactLinks from '../components/contact/ContactLinks.astro';
+---
+<BaseLayout
+  title="Contact - Awan"
+  description="Get in touch for collaboration or questions."
+>
+  <section class="max-w-4xl mx-auto px-6 pt-16 pb-20" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Contact"
+      title="Say hi"
+      description="I respond on GitHub and LinkedIn the fastest."
+    />
+    <div class="mt-8">
+      <ContactLinks />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,94 @@
+---
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+---
+<section class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid lg:grid-cols-[1.15fr,0.85fr] gap-12 items-center">
+  <div data-aos="fade-up" class="space-y-6">
+    <div class="flex flex-wrap gap-2">
+      <Badge label="IoT" variant="iot" />
+      <Badge label="AI Agent" variant="ai" />
+      <Badge label="Prompting" variant="prompting" />
+      <Badge label="Security" variant="security" />
+    </div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold leading-tight">
+      Awan. Under the cloud, building what matters.
+    </h1>
+    <p class="text-text-secondary text-lg max-w-xl">
+      I am Awan, a self taught builder shipping IoT projects, AI agents, and
+      practical notes from a small home lab. Simple tools, real outcomes.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <Button label="See my work" href="/iot" icon="arrow-right" />
+      <Button
+        label="Contact me"
+        href="/contact"
+        variant="secondary"
+        icon="mail"
+      />
+    </div>
+    <p class="text-xs uppercase tracking-[0.35em] text-text-secondary">
+      We are only creatures living beneath the sky.
+    </p>
+  </div>
+  <div data-aos="fade-left" class="relative">
+    <div
+      class="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl"
+      style="background: rgba(56, 189, 248, 0.25);"
+    ></div>
+    <div
+      class="absolute -bottom-10 left-10 w-24 h-24 rounded-full blur-3xl"
+      style="background: rgba(110, 231, 183, 0.25);"
+    ></div>
+    <div class="surface rounded-3xl p-6 shadow-card space-y-6">
+      <div class="flex items-center gap-4">
+        <div
+          class="w-16 h-16 rounded-full flex items-center justify-center text-xl font-display font-semibold"
+          style="background: linear-gradient(135deg, #38BDF8, #6EE7B7);"
+        >
+          A
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-[0.3em] text-text-secondary">
+            Awan
+          </div>
+          <div class="text-lg font-display font-semibold">
+            Under the Cloud
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-3 text-sm text-text-secondary">
+        <div class="flex items-center justify-between">
+          <span>Active boards</span>
+          <span class="text-text-primary font-semibold">3</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Focus</span>
+          <span class="text-text-primary font-semibold">IoT + AI</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Home lab</span>
+          <span class="text-text-primary font-semibold">Self built</span>
+        </div>
+      </div>
+      <div class="surface rounded-2xl p-4">
+        <div class="text-xs uppercase tracking-[0.3em] text-text-secondary">
+          Now building
+        </div>
+        <div class="mt-2 space-y-2 text-sm">
+          <div class="flex items-center gap-2">
+            <i data-lucide="activity" class="w-4 h-4"></i>
+            <span>AetherMon on ESP32 S3</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+            <span>AetherLab autonomous agent</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Prompting techniques notes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+const {
+  label,
+  href,
+  variant = 'primary',
+  icon,
+  target = '_self'
+} = Astro.props;
+
+const baseClasses =
+  'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-transform duration-200';
+
+const variantClasses =
+  variant === 'secondary'
+    ? 'border border-border text-text-primary hover:border-accent'
+    : 'bg-accent text-white shadow-card hover:-translate-y-0.5';
+
+const classes = `${baseClasses} ${variantClasses}`;
+const Tag = href ? 'a' : 'button';
+---
+<Tag
+  class={classes}
+  href={href}
+  target={href ? target : undefined}
+  type={href ? undefined : 'button'}
+>
+  {icon && <i data-lucide={icon} class="w-4 h-4"></i>}
+  <span>{label}</span>
+</Tag>

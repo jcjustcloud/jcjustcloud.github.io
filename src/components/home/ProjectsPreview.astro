@@ -1,0 +1,63 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProjectCard from '../ui/ProjectCard.astro';
+
+const cards = [
+  {
+    title: 'IoT Projects',
+    description: 'ESP32 and Arduino builds focused on monitoring and automation.',
+    href: '/iot',
+    category: 'iot',
+    status: 'active',
+    tags: ['ESP32', 'PlatformIO'],
+    icon: 'cpu'
+  },
+  {
+    title: 'AetherLab AI Agent',
+    description: 'Autonomous agent architecture and deployment notes.',
+    href: '/ai-agent',
+    category: 'ai',
+    status: 'active',
+    tags: ['LangGraph', 'CrewAI'],
+    icon: 'bot'
+  },
+  {
+    title: 'Prompting Guides',
+    description: 'Practical prompt patterns with real examples and breakdowns.',
+    href: '/prompting',
+    category: 'prompting',
+    status: 'active',
+    tags: ['Zero-shot', 'Role'],
+    icon: 'sparkles'
+  },
+  {
+    title: 'Security Notes',
+    description: 'Ethical learning logs and home lab security practice.',
+    href: '/security',
+    category: 'security',
+    status: 'wip',
+    tags: ['Kali', 'Home Lab'],
+    icon: 'shield'
+  }
+];
+---
+<section class="max-w-6xl mx-auto px-6 pb-20">
+  <div class="flex items-end justify-between flex-wrap gap-6" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Overview"
+      title="Everything I am building"
+      description="Short snapshots of the workbench, updated as new projects ship."
+    />
+    <a
+      href="/about"
+      class="text-sm uppercase tracking-[0.3em] text-text-secondary hover:text-accent"
+    >
+      Read the story
+    </a>
+  </div>
+  <div class="grid gap-6 mt-10 md:grid-cols-2">
+    {cards.map((card) => (
+      <ProjectCard {...card} />
+    ))}
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Timeline from '../../components/ui/Timeline.astro';
+import Badge from '../../components/ui/Badge.astro';
+
+const deploymentSteps = [
+  {
+    title: 'Clone and configure',
+    body: 'Pull the repo, set environment keys, and choose the agent targets.'
+  },
+  {
+    title: 'Run locally or in CI',
+    body: 'Use GitHub Actions or a local runner to execute tasks.'
+  },
+  {
+    title: 'Review the markdown output',
+    body: 'Summaries and evidence land in structured markdown files.'
+  }
+];
+---
+<BaseLayout
+  title="AI Agent - Awan"
+  description="AetherLab: autonomous agents for practical security and research tasks."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-10" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="AetherLab"
+      title="Autonomous agent, focused on practical outcomes"
+      description="AetherLab is a master agent coordinating focused Kali tools for learning and monitoring."
+    />
+    <div class="mt-6 flex flex-wrap gap-2">
+      <Badge label="Python" variant="ai" />
+      <Badge label="LangGraph" variant="ai" />
+      <Badge label="CrewAI" variant="ai" />
+      <Badge label="SQLite" variant="ai" />
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+    <div class="surface rounded-3xl p-6 shadow-card">
+      <div class="text-xs uppercase tracking-[0.35em] text-text-secondary">
+        Architecture
+      </div>
+      <h3 class="text-2xl font-display font-semibold mt-3">
+        Master agent with a focused toolset
+      </h3>
+      <ul class="mt-4 space-y-2 text-text-secondary">
+        <li>Master agent orchestrates 25 Kali security tools.</li>
+        <li>Output stored in Markdown for review and sharing.</li>
+        <li>SQLite keeps runs organized for quick recall.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Deploy"
+      title="Run AetherLab anywhere"
+      description="The workflow is designed to be simple and repeatable."
+    />
+    <div class="mt-8 surface rounded-3xl p-6 shadow-card">
+      <Timeline items={deploymentSteps} />
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-20" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Stack"
+      title="Tools and technologies"
+      description="Focused on portability, automation, and clear output."
+    />
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Core</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>Python</li>
+          <li>LangGraph and CrewAI</li>
+          <li>Markdown reporting</li>
+        </ul>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Deployment</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>GitHub Actions</li>
+          <li>Local runs</li>
+          <li>Cloud runner ready</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

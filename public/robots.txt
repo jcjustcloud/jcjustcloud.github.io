@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://awans.me/sitemap-index.xml

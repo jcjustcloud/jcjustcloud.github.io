@@ -1,0 +1,36 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/formatDate';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('prompting');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const meta = [
+  { label: 'Prompting', variant: 'prompting' },
+  { label: entry.data.category, variant: 'prompting' }
+];
+
+const details = [
+  { label: 'Category', value: entry.data.category },
+  { label: 'Date', value: formatDate(entry.data.date) }
+];
+---
+<ContentLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  parentHref="/prompting"
+  parentLabel="Prompting"
+  meta={meta}
+  details={details}
+>
+  <Content />
+</ContentLayout>

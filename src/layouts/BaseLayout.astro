@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const {
+  title = 'Awan - Under the Cloud',
+  description =
+    'Personal space of Muhammad Yusran Rizgullah. IoT, AI Agents, Prompting, and Security - built from scratch, under the cloud.'
+} = Astro.props;
+
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.toString();
+
+const ogImage = Astro.site
+  ? new URL('/og-image.png', Astro.site).toString()
+  : '/og-image.png';
+---
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#38BDF8" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;600&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (err) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <Navbar />
+    <main id="main-content" class="relative">
+      <slot />
+    </main>
+    <Footer />
+    <script type="module">
+      import Alpine from 'alpinejs';
+      import AOS from 'aos';
+      import { createIcons, icons } from 'lucide';
+
+      window.Alpine = Alpine;
+      Alpine.start();
+
+      const setTheme = (nextTheme) => {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        try {
+          localStorage.setItem('theme', nextTheme);
+        } catch (err) {
+          // Ignore storage errors
+        }
+      };
+
+      const init = () => {
+        AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+        createIcons({ icons });
+
+        document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const current =
+              document.documentElement.getAttribute('data-theme') || 'light';
+            const nextTheme = current === 'dark' ? 'light' : 'dark';
+            setTheme(nextTheme);
+          });
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    </script>
+  </body>
+</html>

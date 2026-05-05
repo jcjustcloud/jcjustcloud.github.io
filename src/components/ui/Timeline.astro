@@ -1,0 +1,16 @@
+---
+const { items = [] } = Astro.props;
+---
+<div class="grid gap-5">
+  {items.map((item, index) => (
+    <div class="flex gap-4">
+      <div class="w-8 h-8 rounded-full bg-elevated flex items-center justify-center text-sm font-semibold">
+        {index + 1}
+      </div>
+      <div>
+        <h4 class="font-display font-semibold">{item.title}</h4>
+        <p class="text-text-secondary text-sm mt-1">{item.body}</p>
+      </div>
+    </div>
+  ))}
+</div>

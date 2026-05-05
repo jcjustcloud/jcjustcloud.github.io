@@ -1,0 +1,24 @@
+---
+import { contacts } from '../../data/contact';
+---
+<div class="grid gap-4">
+  {contacts.map((contact) => (
+    <a
+      href={contact.href}
+      class="surface rounded-2xl p-4 flex items-center justify-between hover:-translate-y-0.5 transition-transform"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-elevated flex items-center justify-center">
+          <i data-lucide={contact.icon} class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-sm font-semibold">{contact.label}</div>
+          <div class="text-xs text-text-secondary">{contact.href}</div>
+        </div>
+      </div>
+      <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Badge from '../../components/ui/Badge.astro';
+---
+<BaseLayout
+  title="Security - Awan"
+  description="Learning notes and ethical security practice."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-10" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Security"
+      title="Learning the right way"
+      description="Ethical only. Everything below is for home lab exploration and research."
+    />
+    <div class="mt-6 flex flex-wrap gap-2">
+      <Badge label="Ethical only" variant="security" />
+      <Badge label="Home lab" variant="security" />
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-12" data-aos="fade-up">
+    <div class="surface rounded-3xl p-6 shadow-card">
+      <div class="text-xs uppercase tracking-[0.35em] text-text-secondary">
+        Disclaimer
+      </div>
+      <p class="text-text-secondary mt-3">
+        I am still learning. All security work happens in my own lab and follows
+        ethical guidelines. No public targets.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-20" data-aos="fade-up">
+    <SectionHeader
+      eyebrow="Notes"
+      title="What I am studying"
+      description="A focused set of topics and tools from Kali Linux and beyond."
+    />
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Tools</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>Nmap and basic discovery</li>
+          <li>WiFi research in isolated lab</li>
+          <li>Packet capture fundamentals</li>
+        </ul>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="text-sm font-semibold">Methods</div>
+        <ul class="mt-3 space-y-2 text-sm text-text-secondary">
+          <li>Recon and documentation</li>
+          <li>Threat modeling basics</li>
+          <li>Responsible disclosure mindset</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
