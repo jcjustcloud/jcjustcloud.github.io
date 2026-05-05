@@ -8,30 +8,74 @@ const projects = await getCollection('iot');
 const sortedProjects = projects.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+const boards = ['Arduino Uno', 'ESP32 v1', 'ESP32 S3'];
+const statuses = ['active', 'wip', 'completed'];
 ---
 <BaseLayout
   title="IoT Projects - Awan"
   description="Active IoT builds and hardware experiments."
 >
-  <section class="max-w-6xl mx-auto px-6 pt-16 pb-10" data-aos="fade-up">
+  <section
+    class="max-w-6xl mx-auto px-6 pt-16 pb-20"
+    data-aos="fade-up"
+    x-data="{ board: 'all', status: 'all' }"
+  >
     <SectionHeader
       eyebrow="IoT"
       title="Boards, sensors, and monitoring systems"
       description="From Arduino prototypes to ESP32 deployments in the home lab."
     />
-  </section>
-  <section class="max-w-6xl mx-auto px-6 pb-20">
-    <div class="grid gap-6 md:grid-cols-2">
+
+    <div class="mt-8 grid gap-4 md:grid-cols-[1fr,1fr,auto] md:items-end">
+      <label class="block">
+        <span class="text-sm font-semibold text-text-primary">Board</span>
+        <select
+          class="mt-2 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+          x-model="board"
+        >
+          <option value="all">All boards</option>
+          {boards.map((board) => <option value={board}>{board}</option>)}
+        </select>
+      </label>
+      <label class="block">
+        <span class="text-sm font-semibold text-text-primary">Status</span>
+        <select
+          class="mt-2 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+          x-model="status"
+        >
+          <option value="all">All status</option>
+          {statuses.map((status) => <option value={status}>{status}</option>)}
+        </select>
+      </label>
+      <button
+        type="button"
+        class="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-accent"
+        @click="board = 'all'; status = 'all'"
+      >
+        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+        <span>Reset</span>
+      </button>
+    </div>
+
+    <div class="grid gap-6 mt-10 md:grid-cols-2">
       {sortedProjects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          description={project.data.description}
-          href={`/iot/${project.slug}`}
-          category="iot"
-          status={project.data.status}
-          tags={project.data.tags}
-          icon="cpu"
-        />
+        <div
+          data-board={project.data.board}
+          data-status={project.data.status}
+          x-show="(board === 'all' || board === $el.dataset.board) && (status === 'all' || status === $el.dataset.status)"
+          x-transition
+        >
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            href={`/iot/${project.slug}`}
+            category="iot"
+            status={project.data.status}
+            tags={[project.data.board, ...project.data.tags]}
+            icon="cpu"
+          />
+        </div>
       ))}
     </div>
   </section>
