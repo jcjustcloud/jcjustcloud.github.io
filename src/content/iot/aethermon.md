@@ -4,7 +4,7 @@ description: "Monitoring system berbasis ESP32 S3"
 board: "ESP32 S3"
 status: "active"
 tags: ["esp32", "monitoring", "iot"]
-github: "https://github.com/just-cloud/aethermon"
+github: "https://github.com/jcjustcloud/aethermon"
 date: 2026-05-05
 cover: "/images/projects/iot/aethermon/cover.webp"
 ---
@@ -27,7 +27,7 @@ baca data lingkungan, kirim status, dan bikin overview cepat tanpa setup ribet.
 ## Instalasi
 ### 1. Clone repo
 ```bash
-git clone https://github.com/just-cloud/aethermon
+git clone https://github.com/jcjustcloud/aethermon
 ```
 
 ### 2. Setup PlatformIO

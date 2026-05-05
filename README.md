@@ -14,15 +14,15 @@ npm run dev
 2. Fill the frontmatter (see `src/content/config.ts`)
 3. Write the markdown content
 4. Add images to `public/images/projects/iot/project-name/`
-5. Push to `master` and GitHub Actions will deploy
+5. Push to `main` and GitHub Actions will deploy
 
 ## Add a Prompting Article
 1. Create a new file: `src/content/prompting/article-name.md`
 2. Fill the frontmatter
-3. Push to `master` and GitHub Actions will deploy
+3. Push to `main` and GitHub Actions will deploy
 
 ## Deploy
-Auto deploy via GitHub Actions on every push to `master`.
+Auto deploy via GitHub Actions on every push to `main`.
 The workflow builds Astro and deploys the `dist/` artifact through GitHub Pages.
 
 ## Images

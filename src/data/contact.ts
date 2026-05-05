@@ -1,7 +1,7 @@
 export const contacts = [
   {
     label: 'GitHub',
-    href: 'https://github.com/just-cloud',
+    href: 'https://github.com/jcjustcloud',
     icon: 'github'
   },
   {
