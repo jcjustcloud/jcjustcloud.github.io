@@ -41,7 +41,7 @@ const cards = [
   }
 ];
 ---
-<section class="max-w-6xl mx-auto px-6 pb-20">
+<section x-data="{ q: '' }" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
   <div class="flex items-end justify-between flex-wrap gap-6" data-aos="fade-up">
     <SectionHeader
       eyebrow="Overview"
@@ -55,9 +55,21 @@ const cards = [
       Read the story
     </a>
   </div>
+  <div class="mt-4 w-full">
+    <input
+      x-model="q"
+      type="search"
+      placeholder="Search projects..."
+      class="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+      aria-label="Search projects"
+    />
+  </div>
+
   <div class="grid gap-6 mt-10 md:grid-cols-2">
     {cards.map((card) => (
-      <ProjectCard {...card} />
+      <div x-show="q === '' || `${card.title}`.toLowerCase().includes(q.toLowerCase())">
+        <ProjectCard {...card} />
+      </div>
     ))}
   </div>
 </section>

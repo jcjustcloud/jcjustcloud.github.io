@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 ---
 <BaseLayout title={`${title} - Awan`} description={description}>
-  <section class="max-w-5xl mx-auto px-6 pt-12 pb-8">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
     <div class="text-sm text-text-secondary">
       <a href={parentHref} class="hover:text-accent transition-colors">
         {parentLabel}
@@ -57,7 +57,7 @@ const {
       </div>
     )}
   </section>
-  <section class="max-w-4xl mx-auto px-6 pb-20 rich-text">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 rich-text">
     <slot />
   </section>
 </BaseLayout>
