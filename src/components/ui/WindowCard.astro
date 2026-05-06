@@ -8,7 +8,8 @@ const {
   href,
   status,
   category,
-  tags = []
+  tags = [],
+  cover = null
 } = Astro.props;
 
 const borderClass = {
@@ -32,6 +33,11 @@ const borderClass = {
     </div>
   </div>
   <div class="p-5">
+    {cover && (
+      <div class="mb-3">
+        <img src={cover} alt={`${title} cover`} class="w-full h-40 object-cover rounded-md border border-border" />
+      </div>
+    )}
     <div class="text-sm text-text-secondary">{subtitle}</div>
     <p class="mt-3 text-sm text-text-secondary">{description}</p>
     <div class="mt-4 flex flex-wrap gap-2">

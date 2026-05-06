@@ -24,3 +24,35 @@
     Dark Pink
   </button>
 </div>
+
+<script is:inline>
+  // Ensure toggle works even if parent script hasn't attached handlers yet.
+  (function () {
+    const STORAGE_KEY = 'awans-theme';
+    const buttons = document.querySelectorAll('[data-theme-option]');
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem(STORAGE_KEY, theme);
+      } catch (e) {}
+      buttons.forEach((b) => {
+        b.classList.toggle('is-active', b.dataset.themeOption === theme);
+        b.setAttribute('aria-pressed', String(b.dataset.themeOption === theme));
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.themeOption;
+        if (!val) return;
+        applyTheme(val);
+        // Also dispatch event so other handlers can react
+        window.dispatchEvent(new CustomEvent('awans:theme-changed', { detail: { theme: val } }));
+      });
+    });
+
+    // mark initial active button based on current attribute
+    const initial = document.documentElement.getAttribute('data-theme') || (localStorage.getItem(STORAGE_KEY) || null);
+    if (initial) applyTheme(initial);
+  })();
+</script>
