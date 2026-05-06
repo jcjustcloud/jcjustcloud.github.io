@@ -45,7 +45,7 @@ const ogImage = Astro.site
     <script is:inline>
       try {
         const supportedThemes = ['light', 'dark', 'dark-pink'];
-        const storedTheme = localStorage.getItem('theme');
+        const storedTheme = localStorage.getItem('awans-theme');
         const prefersDark =
           window.matchMedia &&
           window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -83,7 +83,7 @@ const ogImage = Astro.site
 
         document.documentElement.setAttribute('data-theme', nextTheme);
         try {
-          localStorage.setItem('theme', nextTheme);
+          localStorage.setItem('awans-theme', nextTheme);
         } catch (err) {
           // Ignore storage errors
         }

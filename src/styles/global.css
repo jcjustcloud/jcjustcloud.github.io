@@ -13,6 +13,7 @@
   --text-primary: #0F172A;
   --text-secondary: #64748B;
   --border: #CBD5E1;
+  --transition: 300ms ease;
 }
 
 [data-theme="dark"] {

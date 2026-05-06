@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# cirrus instructions (local reference only)
+.github/cirus-instructions.md
